@@ -4,7 +4,6 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
-  padding: var(--space-xl);
   height: 100%;
   width: 100%;
   max-width: 600px;
