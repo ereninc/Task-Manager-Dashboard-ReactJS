@@ -1,9 +1,11 @@
 import React from "react";
+import * as S from "./styles.jsx";
+import HomePageContainer from "../../containers/home-page-containers";
 
 export default function HomePage() {
   return (
-    <div>
-      <h1>HomePage</h1>
-    </div>
+    <S.HomePageContainer>
+      <HomePageContainer />;
+    </S.HomePageContainer>
   );
 }
