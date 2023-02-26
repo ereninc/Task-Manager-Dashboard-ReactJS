@@ -1,12 +1,15 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
 import Sidebar from "../../components/sidebar";
+import Topbar from "../../components/topbar";
+import Main from "../../components/main";
+import * as S from "./styles";
 
 export default function MainLayout() {
   return (
-    <div>
-      MainLayout
-      <Outlet />
-    </div>
+    <S.MainLayout>
+      <Sidebar />
+      <Topbar />
+      <Main />
+    </S.MainLayout>
   );
 }
