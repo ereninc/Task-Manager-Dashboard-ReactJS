@@ -1,25 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Form, useLoaderData, useFetcher } from "react-router-dom";
 import * as S from "./styles.jsx";
+import Loading from "../../components/loading";
 
 export default function TaskDetailPageContainer() {
   const task = useLoaderData();
-  console.log(task);
 
   const fetcher = useFetcher();
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const updateCompleted = (event) => {
     console.log(event.target.checked);
+    setIsSubmitting(true);
     fetcher.submit(
       { idle: true },
       {
         method: "PATCH",
-        // body: JSON.stringify({
-        //   completed: event.target.checked,
-        // }),
       }
     );
   };
+
+  useEffect(() => {
+    setIsSubmitting(false);
+  }, [task]);
 
   return (
     <S.TaskDetailPageContainer>
@@ -35,6 +39,7 @@ export default function TaskDetailPageContainer() {
               onChange={updateCompleted}
             />
             {task.completed ? "Completed" : "Not completed"}
+            {isSubmitting && <Loading />}
           </S.Status>
         </fetcher.Form>
         <S.Name>{task.taskName}</S.Name>
