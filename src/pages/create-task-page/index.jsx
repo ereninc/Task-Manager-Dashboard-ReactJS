@@ -1,4 +1,5 @@
 import React from "react";
+import { redirect } from "react-router-dom";
 import CreateTaskContainer from "../../containers/create-task-page-containers";
 import { addTask } from "../../services/task";
 
@@ -22,6 +23,6 @@ export const createTaskPageSubmitAction = async ({ request }) => {
 
   await addTask(newTask);
 
-  //   console.log(formData.get("task-name"), formData.get("task-description"));
-  return 0;
+  //send user to the recently created task page
+  return redirect(`/tasks/${id}`);
 };
